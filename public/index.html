@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Your Personal Budget with this Free App - Personal Budget</title>
-    <meta name="description" content="Manage your personal budget effectively with this free budgeting app. Stay on top of your finances and achieve financial stability.">
-    <meta name="keywords" content="budgeting, personal finance, financial management, free app">
+    <title>Personal Budget</title>
+    <meta name="description" content="A free personal budger app">
+    <meta name="keywords" content="app free budget finance">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-<a href="#main" class="skip" tabindex="1">Skip to content</a>
+<a href="#main" class="skip">Skip to content</a>
 
     <nav>
         <ul>
@@ -22,14 +22,14 @@
         </ul>
     </nav>
 
-    <header>
+    <div class="hero">
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
-    </header>
+    </div>
 
     <main class="center" id="main">
 
-        <main id="main" role="main">
+        <div class="page-area">
 
             <article>
                 <h1>Stay on track</h1>
@@ -91,18 +91,18 @@
             <article>
                 <h1>Chart</h1>
                 <p>
-                    <canvas id="myChart" width="400" height="400" aria-label="Budget Chart"></canvas>
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </article>
 
-        </main>
+        </div>
 
     </main>
 
     <footer class="bottom">
-        <footer>
+        <div class="center">
             All rights reserved &copy; Fabio Nolasco
-        </footer>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>

@@ -87,7 +87,7 @@
             <div class="text-box">
                 <h1>Free</h1>
                 <p>
-                    This app is free!!! And you are the only one holding your data!
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </div>
 
@@ -95,12 +95,42 @@
 
     </main>
 
-
     <footer class="bottom">
         <div class="center">
             All rights reserved &copy; Fabio Nolasco
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        console.log("inside");
+        var dataSource = {
+            datasets: [{
+                data: []
+            }],
 
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: []
+        };
+        function createChart() {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: dataSource
+            });
+        }
+        function getBudget() {
+            axios.get('/budget')
+            .then(function (res) {
+                console.log(res.data);
+                for(var i = 0; i < res.data.myBudget.length; i++) {
+                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
+                    dataSource.labels[i] = res.data.myBudget[i].title;
+                }
+                createChart();
+            })
+        }
+        getBudget();
+    </script>
 </body>
 </html>

@@ -1,32 +1,28 @@
+const fs = require('fs');
 const express = require("express");
 const app = express();
 const port = 3000;
 
-const budget = {
-    myBudget: [
-    {
-        title: 'Eat out',
-        budget: 30
-    },
-    {
-        title: 'Rent',
-        budget: 350
-    },
-    {
-        title: 'Groceries',
-        budget: 90
-    }
-]
-}
+const filePath = './data.json';
 
 app.use('/', express.static('public'))
 
 app.get('/budget', (req,res)=>{
-    res.json(budget);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+          res.status(500).json({ error: 'Error reading the file' });
+          return;
+        }
+    
+        try {
+          const jsonData = JSON.parse(data);
+          res.json(jsonData);
+        } catch (error) {
+          res.status(500).json({ error: 'Error parsing JSON' });
+        }
+      });
 })
-app.get('/hello', (req,res)=>{
-    res.send("Hello");
-})
+
 app.listen(port, ()=>{
     console.log(`Example app listening at port ${port}`)
 })
